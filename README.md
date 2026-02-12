@@ -40,12 +40,13 @@ Requires [Bun](https://bun.sh).
 bun install
 ```
 
-Create a `.env` file:
+Copy the example env file and fill in your values:
 
+```bash
+cp .env.example .env
 ```
-WORKOS_CLIENT_ID=client_XXXXX
-WORKOS_CLIENT_SECRET=sk_test_XXXXX
-```
+
+Then edit `.env` with your WorkOS client ID and secret from the dashboard.
 
 Make sure `http://localhost:3000/callback` is registered as a redirect URI in the WorkOS dashboard for your environment.
 
