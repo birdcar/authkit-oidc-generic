@@ -1,12 +1,12 @@
 import * as client from "openid-client";
 
 const CLIENT_ID = process.env.WORKOS_CLIENT_ID!;
-const CLIENT_SECRET = process.env.WORKOS_CLIENT_SECRET!;
+const CLIENT_SECRET = process.env.WORKOS_API_KEY!;
 const REDIRECT_URI = "http://localhost:3000/callback";
 const PORT = 3000;
 
 if (!CLIENT_SECRET) {
-  console.error("Set WORKOS_CLIENT_SECRET environment variable");
+  console.error("Set WORKOS_API_KEY environment variable");
   process.exit(1);
 }
 

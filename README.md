@@ -52,7 +52,7 @@ Copy the example env file and fill in your values:
 cp .env.example .env
 ```
 
-Then edit `.env` with your WorkOS credentials from the dashboard. `WORKOS_CLIENT_SECRET` and `WORKOS_API_KEY` are the same value -- both are included for clarity since the generic OIDC flow and the SDK use different env var names.
+Then edit `.env` with your WorkOS client ID and API key from the dashboard.
 
 Make sure `http://localhost:3000/callback` is registered as a redirect URI in the WorkOS dashboard for your environment.
 
@@ -72,14 +72,3 @@ bun run sdk
 
 Both start a server at <http://localhost:3000>. Open it in your browser and click the sign-in link.
 
-## Key finding
-
-The WorkOS environment client ID has partial OIDC compatibility:
-
-| Step | Standard OIDC | WorkOS | Compatible? |
-|------|--------------|--------|-------------|
-| Discovery | `.well-known/openid-configuration` | Supported | Yes (minimal -- missing `subject_types_supported`, `id_token_signing_alg_values_supported`, etc.) |
-| Authorization | `/authorize` with PKCE | Supported | Yes |
-| Token exchange | `application/x-www-form-urlencoded` with `token_type` in response | JSON body, proprietary response shape | No |
-
-For fully spec-compliant OIDC, use WorkOS **Connect Applications** instead of the environment client ID.
