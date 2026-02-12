@@ -56,16 +56,4 @@ Make sure `http://localhost:3000/callback` is registered as a redirect URI in th
 bun run index.ts
 ```
 
-Open http://localhost:3000 in your browser and click "Sign in with WorkOS".
-
-## Key finding
-
-The WorkOS environment client ID has partial OIDC compatibility:
-
-| Step | Standard OIDC | WorkOS | Compatible? |
-|------|--------------|--------|-------------|
-| Discovery | `.well-known/openid-configuration` | Supported | Yes (minimal -- missing `subject_types_supported`, `id_token_signing_alg_values_supported`, etc.) |
-| Authorization | `/authorize` with PKCE | Supported | Yes |
-| Token exchange | `application/x-www-form-urlencoded` with `token_type` in response | JSON body, proprietary response shape | No |
-
-For fully spec-compliant OIDC, use WorkOS **Connect Applications** instead of the environment client ID.
+Open <http://localhost:3000> in your browser and click "Sign in with WorkOS".
